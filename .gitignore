@@ -1,0 +1,16 @@
+# cmake files
+cmake_install.cmake
+CTestTestfile.cmake
+CMakeFiles/
+CMakeCache.txt
+Makefile
+
+# generated files
+x9-notification
+src/*.c
+src/views/*.c
+src/*.h
+src/x9-notification.vapi
+src/x9-notification_internal.h
+src/libx9-notification-clib.a
+
