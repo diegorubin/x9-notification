@@ -31,6 +31,8 @@ PACKAGES
   gtk+-3.0
   gio-2.0
   posix
+CUSTOM_VAPIS
+  librabbitmq.vapi
 GENERATE_VAPI
   x9-notification
 GENERATE_HEADER

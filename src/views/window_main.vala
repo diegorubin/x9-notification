@@ -65,6 +65,7 @@ namespace com.diegorubin.x9_notification.views {
 
       entAddress = new Gtk.Entry();
       entAddress.set_text(settings.getRabbitmqAddress());
+      entAddress.changed.connect(saveAddress);
       box.pack_start(entAddress, false, false, 10);
 
       mainGrid.attach(box, 0, 0, 1, 1);
@@ -78,6 +79,10 @@ namespace com.diegorubin.x9_notification.views {
       } else {
         hide();
       }
+    }
+
+    private void saveAddress() {
+      settings.setRabbitmqAddress(entAddress.get_text());
     }
 
     private void setStatusIcon() {

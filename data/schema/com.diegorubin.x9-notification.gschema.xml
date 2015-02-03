@@ -2,7 +2,7 @@
   <schema id="com.diegorubin.x9-notification" path="/com/diegorubin/x9-notification/" gettext-domain="x9-notification">
 
     <key name="rabbitmq" type="s">
-      <default l10n="messages">http://localhost:5672</default>
+      <default l10n="messages">"http://localhost:5672"</default>
       <summary>RabbitMQ Server Address</summary>
       <description>
         Set the address for RabbitMQ Server
