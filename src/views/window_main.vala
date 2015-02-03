@@ -26,28 +26,68 @@ namespace com.diegorubin.x9_notification.views {
 
   public class WindowMain : Window {
 
+    // settings
+    private X9Settings settings;
+
+    // control
+    private bool winVisible;
+
+    // widgets
+    private Gtk.Grid mainGrid;
+    private Gtk.Entry entAddress;
+
+    // others components
     private StatusIcon trayicon;
-    private Gtk.Menu menuSystem;
+    private Gtk.AttachOptions defaultFlags;
 
     public WindowMain() {
+
+      settings = new X9Settings();
+
+      // controls
+      winVisible = true;
+      defaultFlags = Gtk.AttachOptions.EXPAND | Gtk.AttachOptions.FILL;
+
       // set status icon
       this.setStatusIcon();
 
       // window configuration
-      this.title = "x9-notification Client";
-      this.destroy.connect ( Gtk.main_quit );
+      this.title = "x9 Notification";
+      this.destroy.connect(Gtk.main_quit);
+
+      // widgets
+		  mainGrid = new Gtk.Grid();
+
+      // widgets - address
+      Gtk.Box box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+
+      box.pack_start(new Gtk.Label("RabbiMQ Server"), false, false, 10);
+
+      entAddress = new Gtk.Entry();
+      entAddress.set_text(settings.getRabbitmqAddress());
+      box.pack_start(entAddress, false, false, 10);
+
+      mainGrid.attach(box, 0, 0, 1, 1);
+		  this.add(mainGrid);
+    }
+
+    public void toggleWindow() {
+      this.visible = !this.visible;
+      if (this.visible) {
+        show_all();
+      } else {
+        hide();
+      }
     }
 
     private void setStatusIcon() {
 
       trayicon = new StatusIcon.from_stock(Stock.HOME);
-      trayicon.set_tooltip_text ("X9 Notification");
+      trayicon.set_tooltip_text("X9 Notification");
       trayicon.set_visible(true);
 
-      // trayicon.activate.connect(about_clicked);
+      trayicon.activate.connect(toggleWindow);
 
-      //create_menuSystem();
-      //trayicon.popup_menu.connect(menuSystem_popup);
     }
 
   }
