@@ -22,6 +22,7 @@ link_directories(${GTK_LIBRARY_DIRS})
 set(VALA_SRC
   views/window_main.vala
   x9-settings.vala
+  queue_consumer.vala
   x9-notification.vala
 )
 
@@ -31,14 +32,17 @@ PACKAGES
   gtk+-3.0
   gio-2.0
   posix
-CUSTOM_VAPIS
-  librabbitmq.vapi
+  librabbitmq
 GENERATE_VAPI
   x9-notification
 GENERATE_HEADER
   x9-notification
 )
 
+# set the path to the library folder
+link_directories(/usr/local/lib)
+
 add_executable(x9-notification ${VALA_C})
 add_library(x9-notification-clib ${VALA_C})
+target_link_libraries (x9-notification rabbitmq)
 

@@ -22,7 +22,8 @@
  * SOFTWARE.
  */
 
-[CCode (cprefix = "amqp_", lower_case_cprefix = "amqp_", cheader_filename = "stdint.h,amqp.h")]
+[CCode (cprefix = "amqp_", lower_case_cprefix = "amqp_", cheader_filename =
+"stdint.h,amqp.h,amqp_tcp_socket.h,amqp_framing.h")]
 namespace AMQP {
   [SimpleType, CCode (cname = "amqp_method_number_t")]
   public struct MethodNumber : uint32 { }
