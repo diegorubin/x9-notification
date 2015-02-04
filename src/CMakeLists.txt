@@ -33,6 +33,8 @@ PACKAGES
   gio-2.0
   posix
   librabbitmq
+OPTIONS
+  --target-glib 2.32
 GENERATE_VAPI
   x9-notification
 GENERATE_HEADER

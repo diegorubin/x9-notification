@@ -26,9 +26,28 @@ namespace com.diegorubin.x9_notification {
 
   public class QueueConsumer {
     private Connection connection;
+    private string defaultExchange = "x9";
+    private Thread<void*> bindThread;
 
     public QueueConsumer() {
       connection = new Connection();
+    }
+
+    public int bind() {
+      try {
+        bindThread = new Thread<void*>.try ("bind", connect);
+      } catch(Error e) {
+        return 1;
+      }
+
+      return 0;
+    }
+
+    private void* connect() {
+      while(true) {
+        Thread.usleep (Random.int_range (0, 200000));
+        Posix.system("echo 1 >> /tmp/teste.txt");
+      }
     }
 
   }

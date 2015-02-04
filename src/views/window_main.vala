@@ -31,6 +31,7 @@ namespace com.diegorubin.x9_notification.views {
 
     // control
     private bool winVisible;
+    private QueueConsumer consumer;
 
     // widgets
     private Gtk.Grid mainGrid;
@@ -43,6 +44,8 @@ namespace com.diegorubin.x9_notification.views {
     public WindowMain() {
 
       settings = new X9Settings();
+      consumer = new QueueConsumer();
+      consumer.bind();
 
       // controls
       winVisible = true;
