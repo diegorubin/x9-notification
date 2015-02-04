@@ -45,7 +45,7 @@ namespace com.diegorubin.x9_notification.views {
 
       settings = new X9Settings();
       consumer = new QueueConsumer();
-      consumer.bind();
+      consumer.bind(settings.getRabbitmqAddress());
 
       // controls
       winVisible = true;

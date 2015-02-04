@@ -31,9 +31,11 @@ namespace com.diegorubin.x9_notification {
 
     public QueueConsumer() {
       connection = new Connection();
+      connection.login("/", 0, 131072, 0, SASLMethod.PLAIN,
+                       "guest", "guest");
     }
 
-    public int bind() {
+    public int bind(string address) {
       try {
         bindThread = new Thread<void*>.try ("bind", connect);
       } catch(Error e) {
@@ -44,10 +46,7 @@ namespace com.diegorubin.x9_notification {
     }
 
     private void* connect() {
-      while(true) {
-        Thread.usleep (Random.int_range (0, 200000));
-        Posix.system("echo 1 >> /tmp/teste.txt");
-      }
+      while(true);
     }
 
   }
